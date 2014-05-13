@@ -4,10 +4,10 @@
  */
 package net.smktarunabhakti.penjualan.service;
 
-import java.awt.print.Pageable;
+
 import net.smktarunabhakti.penjualan.domain.Barang;
 import org.springframework.data.domain.Page;
-
+import org.springframework.data.domain.Pageable;
 /**
  *
  * @author Reyzel
