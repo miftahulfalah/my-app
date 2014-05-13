@@ -34,5 +34,5 @@ public class Detail implements Serializable {
     @ManyToOne
     private Barang barang;
     
-    
+    @OneToMany(mappedBy = "header")
 }
