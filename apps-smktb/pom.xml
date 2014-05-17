@@ -5,7 +5,7 @@
   <groupId>net.smktarunabhakti.penjualan</groupId>
   <artifactId>apps-smktb</artifactId>
   <version>1.0-SNAPSHOT</version>
-  <packaging>jar</packaging>
+  <packaging>war</packaging>
 
   <name>apps-smktb</name>
   <url>http://maven.apache.org</url>
@@ -114,6 +114,78 @@
             <artifactId>spring-context</artifactId>
             <version>3.2.3.RELEASE</version>
         </dependency>
+        
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-web</artifactId>
+            <version>3.2.3.RELEASE</version>
+        </dependency>
+       
+       <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-web</artifactId>
+            <version>3.2.3.RELEASE</version>
+        </dependency>
+        
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-security-config</artifactId>
+            <version>3.2.3.RELEASE</version>
+        </dependency>
+       
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-webmvc</artifactId>
+            <version>3.2.3.RELEASE</version>
+        </dependency>
+       
+       <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>2.2.0</version>
+        </dependency>
+        
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>servlet-api</artifactId>
+            <version>2.5</version>
+            <scope>provided</scope>
+        </dependency>
+        
+        <dependency>
+            <groupId>commons-fileupload</groupId>
+            <artifactId>commons-fileupload</artifactId>
+            <version>1.3</version>
+        </dependency>
+        
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+            <version>2.4</version>
+            <scope>runtime</scope>
+        </dependency>
+        
+        <dependency>
+            <groupId>com.jayway.restassured</groupId>
+            <artifactId>rest-assured</artifactId>
+            <version>1.7.2</version>
+            <scope>test</scope>
+        </dependency>
+                
+        <dependency>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpclient</artifactId>
+            <version>4.2.5</version>
+        </dependency>
+        
+        <dependency>
+            <groupId>org.mortbay.jetty</groupId>
+            <artifactId>jsp-2.1</artifactId>
+            <version>6.0.0</version>
+
+        </dependency>
+        
+        
        
   </dependencies>
   
@@ -127,6 +199,32 @@
                   <source>1.6</source>
                   <target>1.6</target>
               </configuration>    
+          </plugin>
+          <plugin>
+   			<groupId>org.mortbay.jetty</groupId>
+          	<artifactId>jetty-maven-plugin</artifactId>
+          	<configuration>
+          		<webAppConfig>
+          			<contextPath>/</contextPath>
+          		</webAppConfig>
+          		<connectors>
+          			<connector implementation="org.mortbay.jetty.nio.SelectChannel">
+                                    <port>10000</port>
+                                </connector>
+          		</connectors>
+                        <stopPort>10066</stopPort>
+                        <stopkey>jetty</stopkey>
+           	</configuration>
+                
+                <executions>
+                    <execution>
+                        <id>start-jetty</id>
+                        <phase>post-integration-test</phase>
+                        <goals>
+                            <goal>stop</goal>
+                        </goals>
+                    </execution>
+                </executions>
           </plugin>
       </plugins>
   </build>
